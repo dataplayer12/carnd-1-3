@@ -102,10 +102,10 @@ There are a few choices which deserve special mention:
 
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-- Optimizer: I used the tried and tested Adam Optimizer. The default hyperparameters of beta1 and beta2 were used as they worked well for this dataset.
-- batch size: I used a batch size of 32. I found this to be a good compromise between training time and accuracy. A lower batch size introduced too much noise into the estimation of gradients and a higher batch size produced a lower accuracy due to the fewer number of back-props throught the network for a given number of epochs.
-- We used 10 epochs for training. The network achieved an accuracy of 93% within 7 epochs and maintained it for the remaining three epochs, confirming that the monimum found by the optimizer was not a shallow local minima but a fairly broad one.
-- Learning rate: I used an exponentially decreasing learning rate. Training started off from a relatively high learning rate of `0.003` in the first epoch which was successively decreased by a factor of `1.4` in each epoch. Thus, the network trained at a learning rate > `0.001` for the first three epochs.
+- **Optimizer:** I used the tried and tested Adam Optimizer. The default hyperparameters of beta1 and beta2 were used as they worked well for this dataset.
+- **Batch size:** I used a batch size of 32. I found this to be a good compromise between training time and accuracy. A lower batch size introduced too much noise into the estimation of gradients and a higher batch size produced a lower accuracy due to the fewer number of back-props throught the network for a given number of epochs.
+- **Epochs:** We used 10 epochs for training. The network achieved an accuracy of 93% within 7 epochs and maintained it for the remaining three epochs, confirming that the monimum found by the optimizer was not a shallow local minima but a fairly broad one.
+- **Learning rate:** I used an exponentially decreasing learning rate. Training started off from a relatively high learning rate of `0.003` in the first epoch which was successively decreased by a factor of `1.4` in each epoch. Thus, the network trained at a learning rate > `0.001` for the first three epochs.
 
 Here, I would like to note that the improvements in network architecture and an optimized learning rate schedule allowed the network to achieve an accuracy of `0.93` within just 7 epochs. I performed ablation analysis by changing each of the choices mentioned above and found that each choice contributes to increasing accuracy and reduced training time without the necessity of data augmentation.
 
@@ -151,13 +151,11 @@ Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Right-of-way at the next intersection
-      		| Right-of-way at the next intersection
-   									| 
+| Right-of-way at the next intersection | Right-of-way at the next intersection|
 | No entry     			| No entry 										|
 | Stop					| Stop											|
 | General caution	      		| General caution					 				|
-| Vehicles over 3.5 metric tons prohibited			| End of no passing      							|
+| Vehicles over 3.5 metric tons prohibited			| End of no passing      		|
 
 
 The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. Images with poor lighting conditions, motion blur etc were correctly classified by the network. However, the last image was incorrectly classified as `End of no passing`. I purposefully chose this image to belong to a class which has only 360 images in the training data (about 1% of the training set). This shows that classes with very few images are challenging to classify. Printing out the top 5 predictions for this image shows that the correct classification occurs within the top 5 predictions of the network (class index 16) showing that the network is indeed learning the correct classification, but is unable to perform well on this class due to the limited number of training examples. I acknowledge that generating symthetic training data may imporve the performance on this particular image, but the purpose of this exploration is to find weaknesses in the network and not to present a flawless picture of the capabilities of the neural network.
