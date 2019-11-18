@@ -20,11 +20,11 @@ The goals / steps of this project are the following:
 [image1]: ./examples/visualization.jpg "Visualization"
 [image2]: ./examples/grayscale.jpg "Grayscaling"
 [image3]: ./examples/random_noise.jpg "Random Noise"
-[image4]: ./examples/placeholder.png "Traffic Sign 1"
-[image5]: ./examples/placeholder.png "Traffic Sign 2"
-[image6]: ./examples/placeholder.png "Traffic Sign 3"
-[image7]: ./examples/placeholder.png "Traffic Sign 4"
-[image8]: ./examples/placeholder.png "Traffic Sign 5"
+[image4]: ./examples/web/00000_00023.jpg "Traffic Sign 1"
+[image5]: ./examples/web/00006_00026.jpg "Traffic Sign 2"
+[image6]: ./examples/web/00012_00018.jpg "Traffic Sign 3"
+[image7]: ./examples/web/00020_00024.jpg "Traffic Sign 4"
+[image8]: ./examples/web/00025_00025.jpg "Traffic Sign 5"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -52,7 +52,7 @@ When the data is loaded into memory with pickle, internally the Xs and Ys are re
 
 For training machine learning models for classificaion, it is very important to consider the distribution of classes in the training data. A well balanced dataset consists of frequency of training data for each class in proportion with the likelihood of encountering the class in the real world when the model is deployed. Here we visualize the frequency of occurence of images for each category in the training data.
 
-![Frequencies][frequencies.png]
+![Frequencies][./examples/frequencies.png]
 
 We clearly see that some classes are represented more heavily than others during training. It is not possible to conclude from this information alone if there is a class imbalance in the training data. If the training data faithfully represents the validation and test datasets, the trained model will have similar accuracy for all three sets of data. We cognize that we may have to come back and augment data to balance the classes in the training set, but at the outset we do not know if that will be necessary.
 
